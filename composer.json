@@ -1,0 +1,79 @@
+{
+  "name": "nyco/working-nyc",
+  "description": "Find and connect to services and resources that can help you prepare for and get a job.",
+  "version": "1.9.7",
+  "authors": [
+    {
+      "name": "NYC Opportunity",
+      "email": "products@nycopportunity.nyc.gov",
+      "homepage": "http://nyc.gov/opportunity"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "nyco/wp-assets": "^1.4",
+    "nyco/wp-config": "^1",
+    "nyco/wp-gc-templates-sync": "^0.0.2",
+    "spatie/schema-org": "3.8.0",
+    "timber/timber": "^1",
+    "wpackagist-plugin/acf-to-rest-api": "*",
+    "wpackagist-plugin/adminimize": "*",
+    "wpackagist-plugin/aryo-activity-log": "*",
+    "wpackagist-plugin/gathercontent-import": "3.1.14",
+    "wpackagist-plugin/google-authenticator": "*",
+    "wpackagist-plugin/limit-login-attempts-reloaded": "*",
+    "wpackagist-plugin/loggedin": "*",
+    "wpackagist-plugin/members": "*",
+    "wpackagist-plugin/rollbar": "*",
+    "wpackagist-plugin/simple-custom-post-order": "*",
+    "wpackagist-plugin/wordpress-importer": "*",
+    "wpackagist-plugin/wp-all-export": "*",
+    "wpackagist-plugin/wp-all-import": "*",
+    "wpackagist-plugin/wp-bitly": "*",
+    "wpackagist-plugin/wp-security-questions": "*",
+    "wpackagist-plugin/wps-hide-login": "*",
+    "wpackagist-plugin/wpscan": "*"
+  },
+  "require-dev": {
+    "filp/whoops": "*",
+    "nyco/wp-login": "^0.0.1",
+    "squizlabs/php_codesniffer": "*",
+    "whoops/soap": "*",
+    "wpackagist-plugin/query-monitor": "*",
+    "wpackagist-plugin/redis-cache": "*",
+    "wpackagist-plugin/wp-crontrol": "*"
+  },
+  "scripts": {
+    "development": [
+      "composer dump-autoload --ignore-platform-req=php"
+    ],
+    "production": [
+      "composer dump-autoload --no-dev --optimize --ignore-platform-req=php"
+    ],
+    "predeploy": [
+      "@development",
+      "@lint",
+      "@production"
+    ],
+    "lint": [
+      "vendor/bin/phpcs --standard=phpcs.xml"
+    ],
+    "fix": [
+      "vendor/bin/phpcbf --standard=phpcs.xml"
+    ],
+    "version": [
+      "composer update nothing --ignore-platform-req=php",
+      "@production"
+    ],
+    "deps": [
+      "composer show --tree"
+    ]
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

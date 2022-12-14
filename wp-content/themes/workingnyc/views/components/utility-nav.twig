@@ -1,0 +1,39 @@
+<div class="c-utility wrap">
+  <a class="link-icon mie-auto" href="{{ return.link }}">
+    <svg aria-hidden="true" class="icon-wnyc-ui rtl:flip">
+      <use href="#feather-chevron-left"></use>
+    </svg>
+
+    <span>{{ return.label }}</span>
+  </a>
+
+  {% for item in cta %}
+  <a class="text-inherit mis-3 {{ item.class }}" href="{{ item.link }}">{{ item.label }}</a>
+  {% endfor %}
+
+  {% if web_share and post.web_share_hide == false %}
+  {% set web_share_id = fn('uniqid') %}
+
+  {% include 'components/web-share.twig' with {this: {share: web_share, class: 'z-30 right-0', id: web_share_id}} only %}
+
+  <button aria-pressed="false" class="btn btn-small btn-primary mis-2 hidden tablet:inline-flex" data-copy="web-share-url-{{ web_share_id }}" data-js="copy">
+    <svg class="icon icon-wnyc-ui">
+      <use href="#feather-copy"></use>
+    </svg>
+
+    <svg class="icon-pressed icon-wnyc-ui mie-1">
+      <use href="#feather-check"></use>
+    </svg>
+
+    <span>{{ __('Copy URL', 'WNYC') }}</span>
+  </button>
+  {% endif %}
+
+  {% if has_filters %}
+  <button :disabled="filters.length === 0" aria-controls="aria-c-filter" aria-expanded="false" class="btn btn-small btn-secondary light:btn-primary" data-dialog="open" data-dialog-lock="true" data-js="dialog">
+    <span class="mie-1">{{ filters_label }}</span>
+
+    <span class="badge badge-small status-secondary light:status-primary">v{ totalFilters }</span>
+  </button>
+  {% endif %}
+</div>

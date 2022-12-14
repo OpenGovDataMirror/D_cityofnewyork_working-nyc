@@ -1,0 +1,57 @@
+<div class="mb-8">
+  <h2 class="h3">{{ __('General Navigation', 'WNYC') }}</h2>
+
+  <ul>
+    {% for menu_item in footer_menu.get_items %}
+    <li><a class="block" href="{{ menu_item.link }}">{{ menu_item.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="mb-8">
+  <h2 class="h3">{{ __('Programs', 'WNYC') }}</h2>
+
+  <ul>
+    {% for post in programs %}<li>
+      <a class="block" href="{{ post.link }}">{{ post.post_title }}</a>
+    </li>{% endfor %}
+  </ul>
+</div>
+
+<div class="mb-8">
+  <h2 class="h3">{{ __('Jobs', 'WNYC') }}</h2>
+
+  <ul>
+    {% for post in jobs %}<li>
+      <a class="block" href="{{ post.link }}">{{ post.post_title }}</a>
+    </li>{% endfor %}
+  </ul>
+</div>
+
+<div class="mb-8">
+  <h2 class="h3">{{ __('About Working NYC', 'WNYC') }}</h2>
+
+  <ul>
+    {% for menu_item in footer_menu_secondary.get_items %}
+    <li>
+      <a href="{{ menu_item.link }}" rel="nofollow noopener" target="_blank">{{ menu_item.title }}</a>
+    </li>
+    {% endfor %}
+
+    {% for menu_item in footer_menu_tertiary.get_items %}
+    <li>
+      <a href="{{ menu_item.link }}" rel="nofollow noopener" target="_blank">{{ menu_item.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{# <div class="mb-8">
+  <h2 class="h3">{{ __('Announcements', 'WNYC') }}</h2>
+
+  <ul>
+    {% for post in announcements %}<li>
+      <a class="block" href="{{ post.link }}">{{ post.post_title }}</a>
+    </li>{% endfor %}
+  </ul>
+</div> #}
